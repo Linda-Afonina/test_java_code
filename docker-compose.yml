@@ -1,0 +1,19 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: test1
+      POSTGRES_PASSWORD: test12345678
+      POSTGRES_DB: test_java_code
+    ports:
+      - "5432:5432"
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/test_java_code
+      SPRING_DATASOURCE_USERNAME: test1
+      SPRING_DATASOURCE_PASSWORD: test12345678
+    depends_on:
+      - db
