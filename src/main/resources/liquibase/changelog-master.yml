@@ -1,0 +1,3 @@
+databaseChangeLog:
+  - include:
+      file: liquibase/wallet_table.sql
